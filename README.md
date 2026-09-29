@@ -10,7 +10,7 @@
 
 **Version 1.9.3** · 2026-09-29 · 49.3 MB
 
-- [Direct download](https://audion.dev/get/dpi-manager/1.9.3/Audion_DPI_Manager_v1.9.3_Full.zip) — unmetered, no rate limits
+- [Direct download](https://dl.audion.dev/dpi-manager/1.9.3/Audion_DPI_Manager_v1.9.3_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/dpi-manager) — every version and how to install
 
 <p align="center"><img src="Docs/screenshot.png" alt="The program window" width="560"></p>
