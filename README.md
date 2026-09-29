@@ -8,14 +8,15 @@
   <a href="https://github.com/Tensionix/dpi-manager/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/Tensionix/dpi-manager?style=flat-square&color=5fd08a&logo=apache&logoColor=white&cacheSeconds=3600"></a>
 </p>
 
-**Version 1.9.4** · 2026-09-29 · 49.3 MB
+**Version 1.9.6** · 2026-09-29 · 49.4 MB
 
-- [Direct download](https://audion.dev/get/dpi-manager/1.9.4/Audion_DPI_Manager_v1.9.4_Full.zip) — unmetered, no rate limits
+- [Direct download](https://dl.audion.dev/dpi-manager/1.9.6/Audion_DPI_Manager_v1.9.6_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/dpi-manager) — every version and how to install
+- [GitHub release](https://github.com/Tensionix/dpi-manager/releases/tag/v1.9.6)
 
 <p align="center"><img src="Docs/screenshot.png" alt="The program window" width="560"></p>
 
-`SHA-256: 5b602ef033935cb27ccbdf8b01b0ab6a9a3df8fc91a5a5c88f5d6d5d55c21ecf`
+`SHA-256: b80dd886a215526483b5898bb50b35b14ca418e8b067724f0cce723bc04c24f7`
 
 ---
 
