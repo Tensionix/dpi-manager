@@ -56,7 +56,7 @@ Also useful: turn on a secure DNS in the **DNS** section — without it the prov
 
 **STATE.** The Zapret folder (another can be chosen), the version on disk and on GitHub, what runs and whether a service exists. **STOP** stops winws.exe (and the service if it runs); **REMOVE SERVICE** removes the service and the WinDivert driver completely.
 
-The update (UPDATE) works like the old Audion Zapret Updater: "the folder is there — update it, it is not — install". The archive is downloaded while Zapret still runs (without the driver GitHub may not open); then the service, winws.exe and the driver are removed; your `lists\*-user.txt` lists, the game filter setting, the IPSet mode and the update-check flag are carried into the new version; the old files are cleared and the new ones put in place. If the driver will not unload, the replacement is prepared for the next Windows boot.
+The update (UPDATE) works like the old Audion Zapret Updater: "the folder is there — update it, it is not — install". The archive is downloaded while Zapret still runs (without the driver GitHub may not open); then the service, winws.exe and the driver are removed; your `lists\*-user.txt` lists, the game filter setting, the IPSet mode and the update-check flag are carried into the new version; the old files are cleared and the new ones put in place. If the driver will not unload, the replacement is prepared for the next Windows boot. The names in the archive are checked before unpacking: a path that leads out ("..", a drive, a network path), a device name or an NTFS stream rejects the whole archive.
 
 **STRATEGY.** Switch buttons, one per `general*.bat` file. Under them: **RUN** (winws.exe with all the lists, without a console window), **AS SERVICE** (autostart), **TO THE CONFIGURATION FIELD** (the parameters go to the CONFIGS section), **COMMAND** (the full command line, can be copied).
 
@@ -94,7 +94,7 @@ An honest limit: the check goes over HTTPS sites. The Discord voice and UDP game
 
 ## DNS
 
-A bypass is powerless while the provider substitutes the DNS answers. Modes: **GOOGLE**, **CLOUDFLARE**, **QUAD9**, **ADGUARD** (AdGuard's "default" servers, `94.140.14.14` and `94.140.15.15`: they also block ads, trackers and phishing sites; the servers without filters, `94.140.14.140` and `94.140.14.141`, can be typed into **OWN**) and **OWN**. **APPLY** sets the servers (IPv4 and IPv6) on all connected adapters that have a way to the internet and turns on the encryption of the queries (DoH) if Windows can (Windows 11). Before the first change the state of the adapters is saved; **RESTORE** brings it back exactly: servers set by hand return, automatic ones become automatic again.
+A bypass is powerless while the provider substitutes the DNS answers. Modes: **GOOGLE**, **CLOUDFLARE**, **QUAD9**, **ADGUARD** (AdGuard's "default" servers, `94.140.14.14` and `94.140.15.15`: they also block ads, trackers and phishing sites; the servers without filters, `94.140.14.140` and `94.140.14.141`, can be typed into **OWN**) and **OWN**. **APPLY** sets the servers (IPv4 and IPv6) on all connected adapters that have a way to the internet and turns on the encryption of the queries (DoH) if Windows can (Windows 11). Before the first change the state of the adapters is saved; **RESTORE** brings it back exactly: servers set by hand return (IPv4 and IPv6 each on its own), automatic ones become automatic again; DoH entries that were not there are taken out, the earlier ones get their values back. The adapter is found by its GUID, not by its number. An adapter that appeared between two changes is saved too (with its state at that moment). If something did not come back the program says so and keeps it in the backup: the button can be pressed again. A failed write is a failure: "DNS changed" appears only when the adapter really shows the new servers; if DoH encryption did not turn on, that is said too.
 
 **Your own DNS.** The "Own DNS" field takes one line: the IP addresses of the servers (IPv4 and IPv6) and, if needed, a DoH address (`https://…`), separated by spaces or commas. For example: `1.1.1.1, 1.0.0.1, https://cloudflare-dns.com/dns-query`. How it is understood:
 
@@ -171,7 +171,7 @@ Looking changes nothing. The one exception is the same as in `service.bat`: the 
 
 ## ZAPRET 2
 
-The second-generation DPI tool by bol-van: its strategies are Lua programs, winws2.exe only intercepts the traffic. **UPDATE** (or **INSTALL** in the section) downloads the release and takes out of it only what Windows needs: `winws2.exe`, the WinDivert driver, `lua\`, `files\fake\`, the filter samples. It all lies in `Tools\zapret2`.
+The second-generation DPI tool by bol-van: its strategies are Lua programs, winws2.exe only intercepts the traffic. **UPDATE** (or **INSTALL** in the section) downloads the release and takes out of it only what Windows needs: `winws2.exe`, the WinDivert driver, `lua\`, `files\fake\`, the filter samples. It all lies in `Tools\zapret2`. An update checks the archive and unpacks it aside, then moves the old files out of the way and puts the new ones in; if a file is in use, the previous version comes back whole.
 
 The release has no ready strategies for Windows. There is one **PRESET** here — the "http, https, quic" example from the zapret2 documentation — in a field you edit; it works on the domain list **DOMAINS** (initially YouTube and Discord). The sets from GitHub (LISTS section, the ZAPRET 2 chip) are appended to this file as blocks: here you see and edit only your own lines.
 
@@ -179,7 +179,7 @@ The **PROFILES FOR ADDRESSES** chip adds, next to every preset profile that sele
 
 ## BYEDPI
 
-**UPDATE** installs the ByeDPI Manager "All in One" package into `Tools\ByeDPI`: the management window, `ciadpi.exe`, ProxiFyre and the installers of dependencies. The Manager's settings (`config`) and the check lists (`proxytest`) are not touched by an update.
+**UPDATE** installs the ByeDPI Manager "All in One" package into `Tools\ByeDPI`: the management window, `ciadpi.exe`, ProxiFyre and the installers of dependencies. The Manager's settings (`config`) and the check lists (`proxytest`) are not touched by an update. The archive is checked and unpacked aside first; then the files are replaced, and if one is held by another program, everything is put back as it was and the version stays the old one.
 
 **OPEN MANAGER** starts its window (strategy picking, the ProxiFyre mode for separate programs). **DEPENDENCIES** opens the `redist` folder — Windows Packet Filter and Visual C++ 2022 are needed only for ProxiFyre.
 
@@ -192,7 +192,7 @@ The **PROFILES FOR ADDRESSES** chip adds, next to every preset profile that sele
 Two commands run with no window, for the builder of a release (they need no administrator rights and show no UAC prompt; they end with the exit code 0 when everything asked for is done, 1 when something failed, 2 when the command is not understood):
 
 - `App\AudionDpiManager.exe --install-apps [all|zapret|zapret2|byedpi] [--force]` installs what the UPDATE buttons install: Flowseal's package into `Tools\zapret-discord-youtube`, zapret2 into `Tools\zapret2`, ByeDPI Manager into `Tools\ByeDPI`. Without `--force` only what is missing or newer.
-- `App\AudionDpiManager.exe --reset-apps` sets the installed apps back to their own defaults: the blocks of this program in Flowseal's lists, Flowseal's own `*-user.txt` lists and game filter, zapret2's two lists, the list files of ByeDPI, log files. The apps stay.
+- `App\AudionDpiManager.exe --reset-apps` sets the installed apps back to their own defaults: the blocks of this program in Flowseal's lists, Flowseal's own `*-user.txt` lists and game filter, zapret2's two lists, the list files of ByeDPI, log files. The apps stay. Only what lies in the project's folder: a Flowseal package the settings point to outside the project (or a link to another folder) is not touched; links (junctions) inside a package, such as `lists` or `utils`, are not followed either: the cleaning names them and skips them.
 
 In the builder these are the step `[06] INSTALL APPS` of `builder_main.cmd` and the first thing `cleanup_project.cmd` does; the cleanup also removes `config\settings.json` (the program starts in Russian and the dark theme by its defaults), the history, the logs and the build folders. The cleanup installs nothing, and neither command builds the program.
 
