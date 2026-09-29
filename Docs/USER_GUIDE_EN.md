@@ -32,7 +32,9 @@ The language is taken from the system at the first start (Russian on a Russian W
 
 ## How the window is built
 
-**The top row** — one row of three dark pieces: the name of the program and its version on the left, the DPI tool switches in the middle, the language, the theme and the font on the right. The height of the window is the scarcest thing the pages have, so what used to be two rows (the title, then a band of switches) is one.
+**The top row** — one row of three dark pieces: the name of the program and its version on the left, the DPI tool switches in the middle, the language, the theme, the font and the tray glyph on the right. The height of the window is the scarcest thing the pages have, so what used to be two rows (the title, then a band of switches) is one.
+
+**The tray.** While the program runs, its icon stands in the Windows tray. The glyph with an arrow down at the right end of the top row hides the window in the tray: the program and the bypass go on. A click on the tray icon brings the window back. The menu of the icon (right button; each line has its icon, the chosen tool is marked with a tangerine dot): **Show the window**, **Start** and **Stop** for the tool chosen on top, the switches **ZAPRET**, **ZAPRET 2**, **BYEDPI**, and **Exit**. The cross of the window still closes the program. A second start of the program from the same folder does not open a second copy: it shows the window of the one that runs.
 
 The three big switches in the middle — ZAPRET, ZAPRET 2, BYEDPI — are not settings but a full switch of the DPI tool under the window: each has its own files, its own connection and its own meaning of the UPDATE and START buttons below. The colour of the line under the header shows which one is chosen (Zapret — blue, zapret2 — amber, ByeDPI — green). The indication is on the buttons themselves: under the name a light and the version ("what is installed": green — the version is the latest, amber — not installed or GitHub has a newer one, "1.10.3 → 1.10.4", gray — GitHub did not answer), and a green triangle by the name means "working now". All three may run at once, but the two interception bypasses (Zapret and zapret2) get in each other's way, so the program will not start the second one.
 
@@ -54,7 +56,7 @@ Also useful: turn on a secure DNS in the **DNS** section — without it the prov
 
 ## ZAPRET
 
-**STATE.** The Zapret folder (another can be chosen), the version on disk and on GitHub, what runs and whether a service exists. **STOP** stops winws.exe (and the service if it runs); **REMOVE SERVICE** removes the service and the WinDivert driver completely.
+**STATE.** The Zapret folder (another can be chosen), the version on disk and on GitHub, what runs and whether a service exists. **STOP** stops winws.exe (and the service if it runs); **REMOVE SERVICE** removes the service and the WinDivert driver completely. Under the install button stands a row of buttons that take all this down: the same **STOP** and **REMOVE SERVICE**, **STOP SERVICE** (the service stays installed), **STOP DRIVER**, **REMOVE DRIVER** and **REMOVE ZAPRET**. The WinDivert driver is shared by Zapret and zapret2: the bypasses that hold it (winws.exe, winws2.exe, the service) are stopped first, and the driver loads again at the next start (WinDivert registers itself for as long as it is loaded, so a stopped driver mostly disappears by itself). **REMOVE ZAPRET** stops the bypass and the service, removes the service and the driver and deletes the folder `Tools\zapret-discord-youtube` with your `*-user.txt` lists - after a question; a folder outside the program is not deleted (only the service and the driver are removed).
 
 The update (UPDATE) works like the old Audion Zapret Updater: "the folder is there — update it, it is not — install". The archive is downloaded while Zapret still runs (without the driver GitHub may not open); then the service, winws.exe and the driver are removed; your `lists\*-user.txt` lists, the game filter setting, the IPSet mode and the update-check flag are carried into the new version; the old files are cleared and the new ones put in place. If the driver will not unload, the replacement is prepared for the next Windows boot. The names in the archive are checked before unpacking: a path that leads out ("..", a drive, a network path), a device name or an NTFS stream rejects the whole archive.
 
@@ -171,7 +173,7 @@ Looking changes nothing. The one exception is the same as in `service.bat`: the 
 
 ## ZAPRET 2
 
-The second-generation DPI tool by bol-van: its strategies are Lua programs, winws2.exe only intercepts the traffic. **UPDATE** (or **INSTALL** in the section) downloads the release and takes out of it only what Windows needs: `winws2.exe`, the WinDivert driver, `lua\`, `files\fake\`, the filter samples. It all lies in `Tools\zapret2`. An update checks the archive and unpacks it aside, then moves the old files out of the way and puts the new ones in; if a file is in use, the previous version comes back whole.
+The second-generation DPI tool by bol-van: its strategies are Lua programs, winws2.exe only intercepts the traffic. **UPDATE** (or **INSTALL** in the section) downloads the release and takes out of it only what Windows needs: `winws2.exe`, the WinDivert driver, `lua\`, `files\fake\`, the filter samples. It all lies in `Tools\zapret2`. An update checks the archive and unpacks it aside, then moves the old files out of the way and puts the new ones in; if a file is in use, the previous version comes back whole. Beside the install button stand **DISCONNECT**, **STOP DRIVER**, **REMOVE DRIVER** (the WinDivert driver is shared with Zapret) and **REMOVE ZAPRET 2**: the folder `Tools\zapret2` is deleted with the lists, the preset in `config\zapret2` stays.
 
 The release has no ready strategies for Windows. There is one **PRESET** here — the "http, https, quic" example from the zapret2 documentation — in a field you edit; it works on the domain list **DOMAINS** (initially YouTube and Discord). The sets from GitHub (LISTS section, the ZAPRET 2 chip) are appended to this file as blocks: here you see and edit only your own lines.
 
@@ -179,7 +181,7 @@ The **PROFILES FOR ADDRESSES** chip adds, next to every preset profile that sele
 
 ## BYEDPI
 
-**UPDATE** installs the ByeDPI Manager "All in One" package into `Tools\ByeDPI`: the management window, `ciadpi.exe`, ProxiFyre and the installers of dependencies. The Manager's settings (`config`) and the check lists (`proxytest`) are not touched by an update. The archive is checked and unpacked aside first; then the files are replaced, and if one is held by another program, everything is put back as it was and the version stays the old one.
+**UPDATE** installs the ByeDPI Manager "All in One" package into `Tools\ByeDPI`: the management window, `ciadpi.exe`, ProxiFyre and the installers of dependencies. The Manager's settings (`config`) and the check lists (`proxytest`) are not touched by an update. The archive is checked and unpacked aside first; then the files are replaced, and if one is held by another program, everything is put back as it was and the version stays the old one. Beside it stand **DISCONNECT** and **REMOVE BYEDPI**: the connection is taken down, the system proxy is put back, the Manager window and ProxiFyre of this folder are closed, the folder `Tools\ByeDPI` is deleted. ByeDPI has no driver (it is a proxy); Windows Packet Filter from the `redist` folder, if you installed it for ProxiFyre, stays in Windows - it is removed in "Apps".
 
 **OPEN MANAGER** starts its window (strategy picking, the ProxiFyre mode for separate programs). **DEPENDENCIES** opens the `redist` folder — Windows Packet Filter and Visual C++ 2022 are needed only for ProxiFyre.
 
@@ -205,7 +207,7 @@ In the builder these are the step `[06] INSTALL APPS` of `builder_main.cmd` and 
 ## What the program changes on the machine
 
 - Starts and stops `winws.exe` / `winws2.exe` / `ciadpi.exe`.
-- Installs and removes the `zapret` service, stops and deletes the WinDivert driver (by buttons).
+- Installs and removes the `zapret` service, stops and deletes the WinDivert driver (by buttons). Deletes the folders of the installed tools (the REMOVE buttons, after a question).
 - Turns TCP timestamps on (`netsh interface tcp set global timestamps=enabled`).
 - Changes the DNS of the adapters (the DNS section) and the system proxy (BYEDPI → CONNECT). Both come back with buttons.
 - Appends a block to `hosts` (LISTS → WRITE TO HOSTS) after a backup; the block is removed by a button.
