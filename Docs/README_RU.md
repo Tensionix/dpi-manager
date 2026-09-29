@@ -2,6 +2,8 @@
 
 [English README](README_EN.md) · [User Guide](USER_GUIDE_EN.md) | [Русский README](README_RU.md) · [Руководство](USER_GUIDE_RU.md)
 
+[GitHub](https://github.com/Tensionix/dpi-manager)
+
 **Содержание**
 
 - [Зачем](#зачем)

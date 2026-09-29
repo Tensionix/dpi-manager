@@ -1,7 +1,7 @@
 # Audion Build Licenses Scan Report
 
 - Project: **Audion DPI Manager** (`audion-dpi-manager`)
-- Run: `20260929T163023Z_audion-dpi-manager_cded46ca`
+- Run: `20260929T164313Z_audion-dpi-manager_0673df1f`
 - Scan root (from the project root): `.`
 - Output (from the project root): `licenses`
 - Status: **PASS**

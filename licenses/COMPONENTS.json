@@ -1,6 +1,6 @@
 {
   "schema": "audion.build_licenses.components.v1",
-  "generated_utc": "2026-09-29T16:30:23Z",
+  "generated_utc": "2026-09-29T16:43:13Z",
   "project_id": "audion-dpi-manager",
   "project_name": "Audion DPI Manager",
   "scan_root": ".",
