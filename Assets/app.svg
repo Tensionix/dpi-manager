@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Audion DPI Manager - a ban sign whose bar passes through</title>
+  <desc>A dark rounded plate; a sea-blue ring with a gap; an amber bar crossing the ring from lower left to upper right and leaving it - the ban that does not hold.</desc>
+  <rect width="1024" height="1024" rx="213.3" fill="#0E1114"/>
+  <path d="M 512 212 A 300 300 0 1 0 812 512" fill="none" stroke="#4CBCDB" stroke-width="96" stroke-linecap="round"/>
+  <path d="M 268 756 L 786 238" stroke="#EABF5A" stroke-width="112" stroke-linecap="round"/>
+  <circle cx="512" cy="512" r="46" fill="#0E1114"/>
+</svg>

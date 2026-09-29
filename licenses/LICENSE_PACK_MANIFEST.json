@@ -1,0 +1,36 @@
+{
+  "schema": "audion.build_licenses.pack_manifest.v1",
+  "generated_utc": "2026-09-29T16:30:23Z",
+  "run_id": "20260929T163023Z_audion-dpi-manager_cded46ca",
+  "project_id": "audion-dpi-manager",
+  "project_name": "Audion DPI Manager",
+  "scan_root": ".",
+  "output_dir": "licenses",
+  "files": [
+    {
+      "name": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "dc9cb33f75a89e7a3d88b080171b49056b5054f5c9584c5b532060283b15e2cb",
+      "size": 18684
+    },
+    {
+      "name": "SOURCE_CODE_AVAILABILITY.txt",
+      "sha256": "b412e15994afa127356cabc5977e8ec652e552a43a66347e2437e253f0cbce41",
+      "size": 842
+    },
+    {
+      "name": "COMPONENTS.json",
+      "sha256": "88f81d9dc49525793e2b1ede6acb807d9d75c59b4302d6a1181b9d324c37420c",
+      "size": 4506
+    },
+    {
+      "name": "_records.json",
+      "sha256": "d4ca5e23cc538ade66172279a8fbfef7bf4cbdde8769e3167063cfeee52b2ee6",
+      "size": 1270
+    },
+    {
+      "name": "LICENSE_SCAN_REPORT.md",
+      "sha256": "4b3e329ccdfcb06eadc4860a0869928baa2ce72a334a994fa864853dc84f6979",
+      "size": 714
+    }
+  ]
+}
