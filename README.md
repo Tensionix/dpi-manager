@@ -10,13 +10,12 @@
 
 **Version 1.11.1** · 2026-10-11 · 49.5 MB
 
-- [Direct download](https://dl.audion.dev/dpi-manager/1.11.1/Audion_DPI_Manager_v1.11.1.zip) — unmetered, no rate limits
+- [Direct download](https://audion.dev/get/dpi-manager/1.11.1/Audion_DPI_Manager_v1.11.1_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/dpi-manager) — every version and how to install
-- [GitHub release](https://github.com/Tensionix/dpi-manager/releases/tag/v1.11.1)
 
 <p align="center"><img src="Docs/screenshot.png" alt="The program window" width="560"></p>
 
-`SHA-256: 8b29f613b2049ac7badb3eaea8aed120b31793f9d36139c7801ca42a83fe3355`
+`SHA-256: 861eb2a6c84c0bd70bfb740b2373ad002bc93007e60c2fb0d770400e9d50c6c0`
 
 ---
 
