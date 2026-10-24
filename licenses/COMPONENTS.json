@@ -1,6 +1,6 @@
 {
   "schema": "audion.build_licenses.components.v1",
-  "generated_utc": "2026-10-20T03:24:38Z",
+  "generated_utc": "2026-10-24T20:43:50Z",
   "project_id": "audion-dpi-manager",
   "project_name": "Audion DPI Manager",
   "scan_root": ".",
@@ -17,7 +17,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "705c710166d2de240414a29c03ddaee0acacc919138ca5bc78129d4584b611e4",
+      "artifact_sha256": "a7f8bdf971c577c527a957830b3aa4b2b75397c7f53ea2221ad84771f080c928",
       "artifact_path": "Start.exe",
       "obligation_class": "permissive",
       "redistributable": true,

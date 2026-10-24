@@ -10,13 +10,12 @@
 
 **Version 1.15.0** · 2026-10-25 · 49.7 MB
 
-- [Direct download](https://dl.audion.dev/dpi-manager/1.15.0/Audion_DPI_Manager_v1.15.0.zip) — unmetered, no rate limits
+- [Direct download](https://audion.dev/get/dpi-manager/1.15.0/Audion_DPI_Manager_v1.15.0_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/dpi-manager) — every version and how to install
-- [GitHub release](https://github.com/Tensionix/dpi-manager/releases/tag/v1.15.0)
 
 <p align="center"><img src="Docs/screenshot.png" alt="The program window" width="560"></p>
 
-`SHA-256: e2c179ab23de77ac5be9122b1583b8d8ef0ee36bf84ab310188abd6e23374aa5`
+`SHA-256: 08c526fd0c2d05d7e72b360462b58eace4f71f4f6555871b607d612a86cd2543`
 
 ---
 
@@ -45,8 +44,8 @@ Getting round blocking is not "download and run". You need a strategy that suits
 
 ## How it is built
 
-- **On top** one row of three pieces: the name (it is also the ABOUT button), in the middle three big switches — ZAPRET, ZAPRET 2, BYEDPI, on the right the language, the theme and the font. A switch is a full switch of the DPI tool: each has its own files, its own connection and its own meaning of the UPDATE and START buttons. The version and "is it working now" are shown on the buttons themselves.
-- **At the bottom** the permanent tool buttons — CONFIGS, TUNE, DNS, LISTS, JOURNAL, DIAGNOSTICS — and on the right UPDATE | START. A button with nothing to do is gray. CONFIGS, TUNE and DIAGNOSTICS work with Zapret only: on ZAPRET 2 and BYEDPI they are gray.
+- **On top** one row of three pieces: the name (it is also the ABOUT button), in the middle three big switches — ZAPRET, ZAPRET 2, BYEDPI, on the right the language, the theme and the font. A switch is a full switch of the DPI tool: each has its own files, its own connection and its own meaning of the UPDATE and START buttons. The version and "is it working now" are shown on the buttons themselves. Starting one DPI tool first stops the other two.
+- **At the bottom** the permanent tool buttons — CONFIGS, STRATEGIES, DNS, LISTS, JOURNAL, DIAGNOSTICS — and on the right UPDATE | START. A button with nothing to do is gray. CONFIGS and DIAGNOSTICS work with Zapret only: on ZAPRET 2 and BYEDPI they are gray.
 - The window works with the same files, services and registry entries as Flowseal's bat files, so the `service.bat` menu and this window can be used alternately.
 
 ## What is inside
@@ -57,9 +56,9 @@ Getting round blocking is not "download and run". You need a strategy that suits
 | ZAPRET 2 | Install, update and connect zapret2; the preset from its documentation in a field |
 | BYEDPI | Install and update ByeDPI Manager, connect through the system proxy |
 | CONFIGS | The configuration field and a cache of 200 entries (star - pin, cross - delete) |
-| TUNE | Parameter tuning: READY, REPEATS, FOOLING, SPLIT, ALL |
+| STRATEGIES | Strategy tuning for the tool chosen on top: for Zapret READY, REPEATS, FOOLING, SPLIT, ALL; for zapret2 the 24 strategies of blockcheck2 in the TLS profile of the preset; for ByeDPI the strategies of the ByeDPI Manager test through a proxy of its own |
 | DNS | The modes GOOGLE, CLOUDFLARE, QUAD9, ADGUARD and OWN (servers and a DoH address in one line) with a check and an exact restore |
-| LISTS | Ready lists for Russia from GitHub (runetfreedom, itdoginfo, re:filter; updated every day) for Zapret, zapret2 and ByeDPI, own lists, import and export, the IPSet list, the hosts file |
+| LISTS | My sites in one field with ticks for YouTube, Discord, Telegram, X, Meta; ready lists for Russia from GitHub (runetfreedom, itdoginfo, re:filter; updated every day) for Zapret, zapret2 and ByeDPI, own lists, import and export, the IPSet list, the hosts file |
 | DIAGNOSTICS | The reasons why the bypass does not work, as a table with fixes |
 
 ## Starting

@@ -7,7 +7,7 @@
 - [First start](#first-start)
 - [ZAPRET](#zapret)
 - [CONFIGS](#configs)
-- [TUNE](#tune)
+- [STRATEGIES](#strategies)
 - [DNS](#dns)
 - [LISTS](#lists)
 - [JOURNAL](#journal)
@@ -36,9 +36,9 @@ The language is taken from the system at the first start (Russian on a Russian W
 
 **The tray.** While the program runs, its icon stands in the Windows tray. The glyph with an arrow down at the right end of the top row hides the window in the tray: the program and the bypass go on. A click on the tray icon brings the window back. The menu of the icon (right button; each line has its icon, the chosen tool is marked with a tangerine dot): **Show the window**, **Start** and **Stop** for the tool chosen on top, the switches **ZAPRET**, **ZAPRET 2**, **BYEDPI**, and **Exit**. The cross of the window still closes the program. A second start of the program from the same folder does not open a second copy: it shows the window of the one that runs.
 
-The three big switches in the middle — ZAPRET, ZAPRET 2, BYEDPI — are not settings but a full switch of the DPI tool under the window: each has its own files, its own connection and its own meaning of the UPDATE and START buttons below. The colour of the line under the header shows which one is chosen (Zapret — blue, zapret2 — amber, ByeDPI — green). The indication is on the buttons themselves: under the name a light and the version ("what is installed": green — the version is the latest, amber — not installed or GitHub has a newer one, "1.10.3 → 1.10.4", gray — GitHub did not answer), and a green triangle by the name means "working now". All three may run at once, but the two interception bypasses (Zapret and zapret2) get in each other's way, so the program will not start the second one.
+The three big switches in the middle — ZAPRET, ZAPRET 2, BYEDPI — are not settings but a full switch of the DPI tool under the window: each has its own files, its own connection and its own meaning of the UPDATE and START buttons below. The colour of the line under the header shows which one is chosen (Zapret — blue, zapret2 — amber, ByeDPI — green). The indication is on the buttons themselves: under the name a light and the version ("what is installed": green — the version is the latest, amber — not installed or GitHub has a newer one, "1.10.3 → 1.10.4", gray — GitHub did not answer), and a green triangle by the name means "working now". Starting any of the three first stops the other two: two bypasses at once get in each other's way. The zapret service is only stopped then and stays installed.
 
-**The bottom bar** — permanent buttons. On the left the tools: CONFIGS, TUNE, DNS, LISTS, JOURNAL, DIAGNOSTICS. Press one and the tool opens in place of the application page; press it again (or Esc) to go back. CONFIGS, TUNE and DIAGNOSTICS work with Zapret only: while ZAPRET 2 or BYEDPI is chosen on top they are gray and say «Zapret only». The others serve all three: DNS is common to Windows, JOURNAL opens on the lines of the tool chosen on top, and LISTS marks its line under the sets. On the right **UPDATE | START** act on the application chosen on top. A button with nothing to do is gray: UPDATE is gray when there is nothing to update, START when the application is not installed. While the application runs, START turns into STOP.
+**The bottom bar** — permanent buttons. On the left the tools: CONFIGS, STRATEGIES, DNS, LISTS, JOURNAL, DIAGNOSTICS. Press one and the tool opens in place of the application page; press it again (or Esc) to go back. CONFIGS and DIAGNOSTICS work with Zapret only: while ZAPRET 2 or BYEDPI is chosen on top they are gray and say «Zapret only». The others serve all three: STRATEGIES tunes a strategy for the tool chosen on top, DNS is common to Windows, JOURNAL opens on the lines of the tool chosen on top, and LISTS marks its line in the MY SITES card. On the right **UPDATE | START** act on the application chosen on top. A button with nothing to do is gray: UPDATE is gray when there is nothing to update, START when the application is not installed. While the application runs, START turns into STOP.
 
 **The status line** above the buttons shows the last message (for 14 seconds) and, during a long operation, its name, a progress bar and STOP. JOURNAL (Ctrl+J) and F1 DOCS are beside it.
 
@@ -49,7 +49,7 @@ The three big switches in the middle — ZAPRET, ZAPRET 2, BYEDPI — are not se
 1. Choose **ZAPRET** on top. If the package is missing it says "not installed" — press **UPDATE**: the program downloads the latest Flowseal release and installs it into the `Tools\zapret-discord-youtube` folder next to itself (an installed package in the old place, `zapret-discord-youtube` at the root, keeps working).
 2. In the **STRATEGY** card pick a strategy. If you do not know which, `general (FAKE TLS AUTO)` is usually a good start.
 3. Press **START**. The bypass runs: the "Bypass" line turns green.
-4. Does not work? Open **TUNE**, the mode **READY**, press **START**: the program checks all strategies and shows which ones open more sites.
+4. Does not work? Open **STRATEGIES**, the mode **READY**, press **START**: the program checks all strategies and shows which ones open more sites.
 5. A working strategy can be installed as a Windows service with **AS SERVICE** — then the bypass starts with the system.
 
 Also useful: turn on a secure DNS in the **DNS** section — without it the provider substitutes the addresses of blocked sites and no bypass helps.
@@ -68,31 +68,35 @@ The update (UPDATE) works like the old Audion Zapret Updater: "the folder is the
 
 **CONFIGURATION FIELD.** The parameters of winws.exe as text, a profile (everything up to `--new`) on its own line. The variables `%BIN%`, `%LISTS%`, `%GameFilterTCP%`, `%GameFilterUDP%` are filled in at the start: the configuration works from any folder and follows the game filter. Buttons: **RUN**, **AS SERVICE**, **SAVE TO CACHE**, **CHECK** (shows the command line and the missing files, starting nothing), **NEW**. Below are the buttons of the ready strategies: press one and its parameters land in the field. The **DNS before the start** chips tie a DNS mode to the configuration; it is applied before the start.
 
-**CONFIGURATION CACHE.** Up to 200 entries. Everything you ran, saved or tested in TUNE lands here. When the room runs out, the entry not used for the longest time goes. **A star pins an entry — a pinned one never goes.** If all 200 are pinned, a new one will not fit: the program says so, and you unpin or delete one. The cross deletes an entry (a pinned one after a question). **CLEAR UNPINNED** removes everything except the pinned ones. The search looks through the title, the strategy and the parameters. A click on a row puts it in the field, ▶ runs it at once.
+**CONFIGURATION CACHE.** Up to 200 entries. Everything you ran, saved or tested in STRATEGIES lands here. When the room runs out, the entry not used for the longest time goes. **A star pins an entry — a pinned one never goes.** If all 200 are pinned, a new one will not fit: the program says so, and you unpin or delete one. The cross deletes an entry (a pinned one after a question). **CLEAR UNPINNED** removes everything except the pinned ones. The search looks through the title, the strategy and the parameters. A click on a row puts it in the field, ▶ runs it at once.
 
 The cache is kept in `config\history\configs.json`.
 
 **Size.** The configuration field stretches with the height of the window: what is around it (the name, DNS, the buttons, the strategies) takes its own room and everything left goes to the field. The window opens at 1280 × 860, where all buttons of the section are in view, and on a smaller screen it is made to fit the working area. The window can be dragged larger or smaller; if it is very low the section scrolls instead of cutting buttons off.
 
-## TUNE
+## STRATEGIES
 
-Parameter tuning: the program tries the variants by itself and shows which one opens more of the sites of `utils\targets.txt` (Discord, YouTube, Google and others). Before the tuning it counts how many sites open with no bypass at all, so that the result reads as "of the blocked ones this many opened".
+Strategy tuning for the DPI tool chosen on top: the program tries the variants one by one by itself and shows which opens more sites. Before the tuning it counts how many sites open with no bypass at all, so a result reads as "of the blocked ones, this many opened". The sites come from the Zapret list `utils\targets.txt` (Discord, YouTube, Google and others), for ByeDPI from the list of its own test `proxytest\domains.txt`, for zapret2 from both together (it has none of its own, and on a network the quick sites of the Zapret list may all open without a bypass); when the list wanted is not there, the other one is taken. **Check**: QUICK (one site of each group, up to eight; for a list of two or three groups up to eight sites taken in turn from the groups; no ping) or FULL (all sites and ping). Number of variants: 8, 16, 24 or 48.
 
-Modes (**What to change**):
+**On ZAPRET** — the modes (**What to change**):
 
-- **READY** — all the strategies of the package in turn. The simplest way to find a working one.
+- **READY** — every strategy of the package in turn. The simplest way to find one that works.
 - **REPEATS** — changes `--dpi-desync-repeats` of the chosen base.
-- **FOOLING** — changes `--dpi-desync-fooling` (ts, md5sig, badseq, badsum). Works only if the parameter is already in the strategy.
+- **FOOLING** — changes `--dpi-desync-fooling` (ts, md5sig, badseq, badsum). Works only when the strategy already has the parameter.
 - **SPLIT** — changes `--dpi-desync-split-pos` (1, 2, midsld, sniext+1…).
-- **ALL** — goes through the three above in turn; the best variant of each step becomes the base of the next.
+- **ALL** — goes through the three in turn; the best variant of each step becomes the base of the next.
 
-**Base** — a strategy from ZAPRET or the text of the CONFIGS field. **Check**: QUICK (one site from each group, up to eight, no ping) or FULL (all sites and ping). The number of variants: 8, 16, 24 or 48.
+**Base** — the strategy from ZAPRET or the text in the CONFIGS field. The rows of the result: **INTO THE FIELD**, **RUN**, **AS A SERVICE**, a star. Every variant tried goes to the cache with its score (in READY the five best, not all twenty).
 
-While the tuning runs, the bypass is started and stopped for every variant — the internet may drop for seconds. A bypass that was running comes back after the tuning. **STOP** stops after the current variant.
+**On ZAPRET 2** 24 strategies for HTTPS (TLS) from the check of the author of zapret2 — `blockcheck2` in the repository bol-van/zapret2 — are tried: cuts (`multisplit`, `multidisorder`), fake packets with different foolings (`fake` with `tcp_md5`, `badsum`, `tcp_seq`, `tcp_ts`, `ip_autottl`), their combinations, `fakedsplit`, `fakeddisorder`, `hostfakesplit`, `tcpseg`. Each goes into the TLS profile of your preset of the ZAPRET 2 section in place of its `--lua-desync` lines; the rest of the preset (the other profiles, the filters, the files) does not change. The strategy that stands there now is tried first — you see whether anything beats it. For the time of the check the profiles by `list-user.txt` read it together with the sites being checked; the list itself does not change. The rows of the result: **INTO THE PRESET** (put the strategy into the TLS profile and save the preset) and **CONNECT**.
 
-The results are sorted: more sites opened, and with a tie a shorter response time. Every row has **TO FIELD**, **RUN**, **AS SERVICE** and a star. Every variant checked goes to the cache with its score (in the READY mode the five best, not all twenty).
+**On BYEDPI** the strategies of the ByeDPI Manager test are tried — `proxytest\strategies.txt` (60 in the package; the program keeps this file on an update, so your edits stay). For each a `ciadpi.exe` of its own starts on a free port, and the sites are opened through it as through a proxy; your connection and the system proxy are not touched, no administrator rights are needed. The strategy of the BYEDPI section is tried first. The rows: **INTO THE PARAMETERS** and **CONNECT**.
 
-An honest limit: the check goes over HTTPS sites. The Discord voice and UDP games are not checked by it.
+While a tuning of Zapret or zapret2 runs, the bypass is started and stopped for every variant — the internet may drop for seconds. A bypass that was working (winws or winws2) is stopped for the time and comes back after the tuning. **STOP** ends it after the current variant. A variant the DPI tool refused, or with which it stopped during the check, is shown with a red cross and the reason.
+
+The results are sorted: more sites opened, and when equal, a shorter response time. When everything opens without a bypass too, the variants cannot be compared on this network — the program says so.
+
+The honest limit: the check goes over HTTPS sites. Discord voice and games over UDP are not checked by it.
 
 ## DNS
 
@@ -112,6 +116,10 @@ If you have a Keenetic router, turn on "Request transit" in it.
 
 ## LISTS
 
+**MY SITES.** The first card of the section is the one place for the sites that must open through the bypass. On top are the ticks of ready services: **YOUTUBE**, **DISCORD**, **TELEGRAM**, **X (TWITTER)** and **META: FACEBOOK, INSTAGRAM, THREADS, WHATSAPP**. A tick puts in every domain of the service — the site, the pictures and videos, the short links (the lists follow itdoginfo/allow-domains); the tooltip says what is in. Below is the field for your own sites: a domain per line, subdomains are included by themselves. A tick works at once, the field on **SAVE** (**UNDO EDIT** brings back what was saved); lines that are not a domain are dropped and counted. On the first start all five services are ticked, and the domains you typed into `list-general-user.txt` yourself move into the field: the file keeps its comments and the sample line.
+
+All of it is written into every DPI tool ticked with the **Write into:** chips (ZAPRET, ZAPRET 2, BYEDPI; ZAPRET by default) — the same way as the sets below: for Zapret into `list-general-user.txt`, for zapret2 into `list-user.txt` (as the block `my-sites`), for ByeDPI into `hosts.txt`. Under the chips each DPI tool has a line: how many domains and addresses its lists hold now (the numbers are read from the files themselves). A DPI bypass opens a site the provider cuts by its name; when a service is cut by its addresses, only a VPN helps.
+
 **LISTS FROM GITHUB.** Zapret bypasses blocking only for the sites and addresses in its lists. Here ready large lists for Russia are connected; they are published on GitHub and updated every day or more often, and the program downloads them straight from there (only from `raw.githubusercontent.com`):
 
 | Set | What it is | Entries |
@@ -119,24 +127,24 @@ If you have a Keenetic router, turn on "Request transit" in it.
 | runetfreedom · ru-blocked-community | addresses from community.antifilter.download: blocked ones that users reported | about 900 |
 | runetfreedom · ru-blocked | all blocked addresses and subnets (antifilter.download) | about 88 thousand |
 | runetfreedom · re-filter (IP) | addresses of the re:filter project | about 25 thousand |
-| runetfreedom · Telegram, Twitter, Facebook | subnets of the three services | about 150 |
-| Discord (subnets) | Discord voice servers: itdoginfo/allow-domains and re:filter | about 2,300 |
-| itdoginfo · Russia inside (domains) | domains that need bypassing inside Russia | about 1,200 |
-| Re:filter · community (domains) | popular and blocked domains | about 700 |
-| Re:filter · domains_all (domains) | the full re:filter domain list | about 80 thousand |
+| Re:filter · domains_all (domains) | the full list of blocked domains of re:filter | about 80 thousand |
+| *for a VPN:* runetfreedom · Telegram, Twitter, Facebook | the whole networks of the three services | about 150 |
+| *for a VPN:* Discord (subnets) | the networks of Discord: itdoginfo/allow-domains and re:filter | about 2,300 |
+| *for a VPN:* itdoginfo · Russia inside (domains) | what is blocked mixed with sites that close themselves to Russia (geo-blocking) | about 1,200 |
+| *for a VPN:* Re:filter · community (domains) | sites that are not blocked but close access from Russia themselves | about 700 |
+
+The sets are in two groups. **Blocked in Russia** — what Roskomnadzor cuts by DPI: the bypass is what opens them, so an enabled set is written into the lists of the DPI tools. **For a VPN** — not lists of what is blocked but sites that close themselves to Russian addresses and whole networks of services: a DPI bypass will not open them, they are sent through a VPN. Such a set is downloaded and kept up to date, and the buttons **EXPORT IP…** and **EXPORT ALL…** take it — for a VPN client — but it is not written into the lists of the DPI tools: that would send needless sites through the bypass. A set for a VPN that an older version of the program wrote is taken out of the lists of the DPI tools by itself at the start.
 
 The lists of runetfreedom/russia-blocked-geoip are rebuilt every 6 hours from antifilter.download and re:filter (GPL-3.0). The two large sets (ru-blocked and domains_all) carry a warning in their tooltip: they make the lists much longer, and winws reads them at every start.
 
-How it works: the **ON** chip of a set is the whole gesture. An enabled set is written into the lists of the DPI tools chosen with the **Write into:** chips (ZAPRET, ZAPRET 2, BYEDPI; ZAPRET is on by default). For Zapret it goes **as a block between two marker lines** of this program (`# >>> Audion DPI Manager: name | entries | date` … `# <<< Audion DPI Manager: name`): domains go into `list-general-user.txt`, addresses into the real IPSet list (`ipset-all.txt`, or, while the IPSet mode is NONE or ALL, into its copy `ipset-all.txt.backup`, where the list waits). Your own lines beside them are never touched, and the blocks come out by the markers: switch a set off and the file is back byte for byte as it was. How the other two DPI tools are served is below, in "Lists for zapret2 and ByeDPI".
+How it works: the **ON** chip of a set is the whole gesture. An enabled set of what is blocked is written into the lists of the DPI tools ticked with the **Write into:** chips in the MY SITES card. For Zapret it goes **as a block between two marker lines** of this program (`# >>> Audion DPI Manager: name | entries | date` … `# <<< Audion DPI Manager: name`): domains go into `list-general-user.txt`, addresses into the real IPSet list (`ipset-all.txt`, or, while the IPSet mode is NONE or ALL, into its copy `ipset-all.txt.backup`, where the list waits). Your own lines beside them are never touched, and the blocks come out by the markers: switch a set off and the file is back byte for byte as it was. How the other two DPI tools are served is below, in "Lists for zapret2 and ByeDPI".
 
 - **Addresses work only in the IPSet mode LIST.** A fresh Flowseal package is in the mode NONE. When you enable a set with addresses and the mode is different, the program asks whether to switch it: the mode is yours, it is not changed without asking. The domains of the sets work in any mode.
 - The **↻** button of a set downloads it again, the icon beside it opens its repository on GitHub. **UPDATE ENABLED** does all enabled ones at once. The **ONCE A DAY** chip: while the window is open, the enabled sets older than 23 hours are downloaded by themselves (25 seconds after the start, then a check every hour). What is downloaded is checked line by line (addresses, subnets, domains), rubbish is dropped; an empty or broken answer never replaces the old list.
 - After the Zapret package is updated or reinstalled, the enabled sets are written into it again. So they are after **UPDATE IPSET LIST**.
-- **REMOVE FROM DPI TOOLS** takes everything this program wrote out of the lists of all DPI tools and switches the sets off; the sets themselves stay and can be enabled again.
-- The **OWN DOMAINS** editor below does not show the blocks (they hold thousands of lines) and keeps them when it saves.
-- Under the tool chips each tool has a line "what is in its lists now": the numbers are read from the files themselves, not taken from what the program meant to write.
+- **REMOVE FROM DPI TOOLS** takes everything this program wrote out of the lists of all DPI tools and switches the sets off, my sites too; the sets themselves stay and can be enabled again, my sites come back with a tick or SAVE.
 
-**Lists for zapret2 and ByeDPI.** The same sets can be written into the other two DPI tools: turn their chips on in "Write into:". The DPI tool must be installed; if not, the program says so and makes nothing up for it (it writes after the installation). Each DPI tool reads its lists in its own way, so it is arranged differently:
+**Lists for zapret2 and ByeDPI.** The same sets can be written into the other two DPI tools: turn their chips on in "Write into:" (the MY SITES card). The DPI tool must be installed; if not, the program says so and makes nothing up for it (it writes after the installation). Each DPI tool reads its lists in its own way, so it is arranged differently:
 
 | DPI tool | Where it is written | How it is used |
 | --- | --- | --- |
@@ -151,11 +159,11 @@ Names ciadpi does not understand (for example with an underscore) do not go into
 - **IMPORT FILE…** takes a `.txt`, `.lst`, `.csv` file (one entry per line, `#` is a comment) or an archive saved with EXPORT ALL. The program tells addresses from domains itself. Lines that are neither are dropped and counted. A file with the same name replaces the earlier list.
 - **PASTE FROM CLIPBOARD** does the same with the text from the clipboard (the list "From clipboard").
 - **EXPORT IP…** saves all addresses and subnets of the enabled sets to a text file, one per line: to take them to another program.
-- **EXPORT ALL…** saves a `.zip` archive: all sets with their content and your three lists from the Zapret package (without the blocks of the sets). The same archive comes back with IMPORT FILE, on another computer too: sets with the same name are replaced, your package lists are merged line by line with those already there.
+- **EXPORT ALL…** saves a `.zip` archive: all sets with their content, my sites (the field and the ticks) and your three lists from the Zapret package (without the blocks of the sets). The same archive comes back with IMPORT FILE, on another computer too: sets with the same name are replaced, your package lists are merged line by line with those already there.
 
 Entries are checked like this: an address is four dotted numbers or IPv6, with a mask length or without; `/0`, `0.x.x.x`, `127.x.x.x`, 224 and above are dropped (they do only harm in an ipset). A domain is a name with a dot; case, `*.` and dots at the ends are removed. The sets are kept in `config\history\lists\`.
 
-**Flowseal's own lists:** **OWN DOMAINS** (`list-general-user.txt`), **EXCEPTIONS**, **IP EXCEPTIONS** — editable; the others lie in the package and open read-only. Looking never creates files: a user list that does not exist yet shows the text `service.bat` would put in it.
+**ZAPRET FILES** — the lists of Flowseal's package: **EXCEPTIONS**, **IP EXCEPTIONS** — yours, editable; the others lie in the package and open read-only. Looking never creates files: a user list that does not exist yet shows the text `service.bat` would put in it.
 
 **IPSET.** **UPDATE IPSET LIST** downloads a fresh `ipset-all.txt` (the sets with addresses are written into it again afterwards).
 
@@ -175,7 +183,7 @@ Looking changes nothing. The one exception is the same as in `service.bat`: the 
 
 The second-generation DPI tool by bol-van: its strategies are Lua programs, winws2.exe only intercepts the traffic. **UPDATE** (or **INSTALL** in the section) downloads the release and takes out of it only what Windows needs: `winws2.exe`, the WinDivert driver, `lua\`, `files\fake\`, the filter samples. It all lies in `Tools\zapret2`. An update checks the archive and unpacks it aside, then moves the old files out of the way and puts the new ones in; if a file is in use, the previous version comes back whole. Beside the install button stand **DISCONNECT**, **STOP DRIVER**, **REMOVE DRIVER** (the WinDivert driver is shared with Zapret) and **REMOVE ZAPRET 2**: the folder `Tools\zapret2` is deleted with the lists, the preset in `config\zapret2` stays.
 
-The release has no ready strategies for Windows. There is one **PRESET** here — the "http, https, quic" example from the zapret2 documentation — in a field you edit; it works on the domain list **DOMAINS** (initially YouTube and Discord). The sets from GitHub (LISTS section, the ZAPRET 2 chip) are appended to this file as blocks: here you see and edit only your own lines.
+The release has no ready strategies for Windows. There is one **PRESET** here — the "http, https, quic" example from the zapret2 documentation — in a field you edit; it works on the domain list **DOMAINS** (initially YouTube and Discord). My sites and the sets from GitHub (LISTS section, the ZAPRET 2 chip) are appended to this file as blocks: here you see and edit only your own lines.
 
 The **PROFILES FOR ADDRESSES** chip adds, next to every preset profile that selects traffic by `list-user.txt`, a twin that selects it by `lists\ipset-user.txt` — LISTS puts the addresses of the sets there. The twins stand after the originals: a name from the list of domains wins, an address catches what has no name (QUIC, calls). Only the profile part (`--filter-…`, `--lua-desync`…) is copied; the global options (`--lua-init`, `--blob`, `--wf-…`) stay in one copy. The preset is saved at once; switch the chip off and the twins are removed, the preset is back byte for byte. **CHECK** shows the command line and the missing files. `%Z2%` in the text is the `Tools\zapret2` folder. **START** starts winws2.exe with the preset from the field (even an unsaved one; it is saved at the start). The strategy for zapret2 is picked by hand: blockcheck2 is not shipped in the Windows release.
 
@@ -206,12 +214,12 @@ In the builder these are the step `[06] INSTALL APPS` of `builder_main.cmd` and 
 
 ## What the program changes on the machine
 
-- Starts and stops `winws.exe` / `winws2.exe` / `ciadpi.exe`.
+- Starts and stops `winws.exe` / `winws2.exe` / `ciadpi.exe`; starting one stops the others.
 - Installs and removes the `zapret` service, stops and deletes the WinDivert driver (by buttons). Deletes the folders of the installed tools (the REMOVE buttons, after a question).
 - Turns TCP timestamps on (`netsh interface tcp set global timestamps=enabled`).
 - Changes the DNS of the adapters (the DNS section) and the system proxy (BYEDPI → CONNECT). Both come back with buttons.
 - Appends a block to `hosts` (LISTS → WRITE TO HOSTS) after a backup; the block is removed by a button.
-- Writes the enabled sets of lists into the lists of the chosen DPI tools (LISTS → LISTS FROM GITHUB → "Write into"): for Zapret and zapret2 as blocks between marker lines (`list-general-user.txt` and the IPSet list of the package; `Tools\zapret2\lists\list-user.txt` and `ipset-user.txt`), for ByeDPI as files of its own, `Tools\ByeDPI\lists\hosts.txt` and `ipset.txt`. The blocks come out by the markers. It changes the IPSet mode only with your consent; the zapret2 preset only with the PROFILES FOR ADDRESSES chip, and the ByeDPI mode "by lists" only by your choice.
+- Writes my sites and the enabled sets of lists into the lists of the chosen DPI tools (LISTS → MY SITES → "Write into"): for Zapret and zapret2 as blocks between marker lines (`list-general-user.txt` and the IPSet list of the package; `Tools\zapret2\lists\list-user.txt` and `ipset-user.txt`), for ByeDPI as files of its own, `Tools\ByeDPI\lists\hosts.txt` and `ipset.txt`. The blocks come out by the markers. It changes the IPSet mode only with your consent; the zapret2 preset only with the PROFILES FOR ADDRESSES chip, and the ByeDPI mode "by lists" only by your choice.
 - Deletes the Discord cache and the services of other bypasses — only by their own buttons and after a question.
 
 All of it is written to the journal. Nothing runs on the Windows scheduler. The program goes to the network only for versions, releases and lists on GitHub and — on your CHECK button in the DNS section — to the servers you named yourself. Once a day, while the window is open, it downloads the enabled sets of lists again; the ONCE A DAY chip in LISTS turns that off.
